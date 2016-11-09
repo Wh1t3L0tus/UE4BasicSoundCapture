@@ -1,5 +1,3 @@
-
-
 #include "UE4BasicSoundCapture.h"
 #include "Class.h"
 #include "UObjectGlobals.h"
@@ -26,6 +24,7 @@ AVoiceInputActor::AVoiceInputActor()
 	VoiceCaptureAudioComponent->VolumeMultiplier = 5.f;
 
 	VoiceCaptureSoundWaveProcedural = NewObject<USoundWaveProcedural>();
+	VoiceCaptureSoundWaveProcedural->AddToRoot();
 	VoiceCaptureSoundWaveProcedural->SampleRate = 22050;
 	VoiceCaptureSoundWaveProcedural->NumChannels = 1;
 	VoiceCaptureSoundWaveProcedural->Duration = INDEFINITELY_LOOPING_DURATION;
@@ -92,6 +91,7 @@ void AVoiceInputActor::VoiceCaptureTick() {
 }
 
 void AVoiceInputActor::PlayVoiceCapture() {
+
 	if (!PlayVoiceCaptureFlag)
 	{
 		VoiceCaptureAudioComponent->FadeOut(0.3f, 0.f);
